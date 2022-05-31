@@ -17,15 +17,15 @@
       [ngClass]="{
         'form-check-input': form.type === 'checkbox',
         'form-control': form.type === 'text',
-        'is-invalid': submitted && formControls['{{ form.field }}'].errors
+        'is-invalid': submitted && formControls['{{ form.field }}']?.errors
       }"
     />
     <div
-      *ngIf="submitted && formControls['{{ form.field }}'].errors"
+      *ngIf="submitted && formControls['{{ form.field }}']?.errors"
       class="invalid-feedback"
     >
       <div *ngIf="formControls['{{ form.field }}'].errors?.['required']">
-        First Name is Mandatory
+        {{ form.field }} is Mandatory
       </div>
     </div>
   </div>

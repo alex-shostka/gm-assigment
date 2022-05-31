@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from "@angular/forms";
+import { FormControl, FormBuilder, Validators } from "@angular/forms";
 import { UserFormService } from "src/app/services/user-form.service";
 import { IUserFormBuilderInterface } from "src/app/interfaces/user-form.interfase";
 
@@ -20,7 +20,7 @@ export class UserFormComponent implements OnInit {
   form = this.fb.group({
     name: new FormControl("", Validators.required),
 	email: new FormControl("", Validators.required),
-	confirm: new FormControl(true, Validators.requiredTrue)
+	confirm: new FormControl(true)
   });
 
   ngOnInit(): void {
