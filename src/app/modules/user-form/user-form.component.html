@@ -1,0 +1,33 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="mb-3" *ngFor="let form of fromStructure">
+    <label
+      *ngIf="form.hidden !== 'true'"
+      for="{{ form.field }}"
+      class="form-label"
+    >
+      {{ form.label }}
+    </label>
+    <input
+      required
+      formControlName="{{ form.field }}"
+      *ngIf="form.hidden !== 'true'"
+      type="{{ form.type }}"
+      id="{{ form.field }}"
+      placeholder="{{ form.label }}"
+      [ngClass]="{
+        'form-check-input': form.type === 'checkbox',
+        'form-control': form.type === 'text',
+        'is-invalid': submitted && formControls['{{ form.field }}'].errors
+      }"
+    />
+    <div
+      *ngIf="submitted && formControls['{{ form.field }}'].errors"
+      class="invalid-feedback"
+    >
+      <div *ngIf="formControls['{{ form.field }}'].errors?.['required']">
+        First Name is Mandatory
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
